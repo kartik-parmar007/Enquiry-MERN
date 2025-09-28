@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EnquiryList from "./enquiryList/enquiryList.jsx";
 import axios from "axios";
+import { API_ENDPOINTS } from "./config/api.js";
 
 const UserEnquiryUI = () => {
   const [message, setMessage] = useState("");
@@ -20,7 +21,7 @@ const UserEnquiryUI = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/api/enquiries/insert", formData);
+      const response = await axios.post(API_ENDPOINTS.enquiries.insert, formData);
       console.log("Enquiry saved successfully:", response.data);
       setMessage("Enquiry submitted successfully!");
       e.target.reset(); // Reset the form
